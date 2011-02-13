@@ -29,7 +29,7 @@
   include "db_connect.php";
   if (isset($_POST['search']))
   {
-  	$searchterm = $_POST['search'];
+  	$searchterm = mysqli_real_escape_string($db, trim($_POST['search']));
 	
 
   	if ($searchterm == 'movies')

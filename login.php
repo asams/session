@@ -13,8 +13,8 @@
 <div id="contents">
 <?php
   include "db_connect.php";
-  $name = $_POST['username'];
-  $pw = $_POST['pw'];
+  $name = mysqli_real_escape_string($db, trim($_POST['username']));
+  $pw = mysqli_real_escape_string($db, trim($_POST['pw']));
 
    $query = "select * from users WHERE username = '$name' AND password = '$pw'";
    $result = mysqli_query($db, $query);
