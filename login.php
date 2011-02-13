@@ -1,3 +1,7 @@
+<?php
+   session_start();
+?>
+
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -17,8 +21,12 @@
    if ($row = mysqli_fetch_array($result))
    {
    		
-   		echo "<p>Thanks for logging in, $name</p>\n";
+   		$_SESSION['username'] = $name;
+		$_SESSION['zipcode'] = $row['zipcode'];
+		echo "<p>Thanks for logging in, $name</p>\n";
+		//echo $_SESSION['username'];
    		echo "<p><a href=\"search.php\">Continue</a></p>";
+		
    }
    else
     {

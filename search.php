@@ -1,3 +1,9 @@
+<?php
+   session_start();
+  $userName = $_SESSION['username'];
+  $zip = $_SESSION['zipcode'];
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -8,9 +14,11 @@
 </head>
 
 <body>
+
+
 <div id="contents">
   <h1>Search</h1>
-  <p>For example, you can type 'movies', 'coffee', 'Mexican', or the name of a store like 'Starbucks</p>
+  <p>For example, you can type 'movies', 'coffee', 'Mexican', or the name of a store like 'Starbucks'</p>
   <form method="post" action="search.php">
     <label for="username">Search:</label>
     <input type="text" id="search" name="search" />
@@ -22,10 +30,11 @@
   if (isset($_POST['search']))
   {
   	$searchterm = $_POST['search'];
+	
 
   	if ($searchterm == 'movies')
   	{
-  		$query = "SELECT * FROM movies ORDER BY movie";
+  		$query = "SELECT * FROM movies WHERE zip = '$zip' ORDER BY movie";
   
   		$result = mysqli_query($db, $query)
    			or die("Error Querying Database");
@@ -39,7 +48,7 @@
   	}
   	else
   	{
-  		$query = "SELECT * FROM stores where name LIKE '%$searchterm%' OR type LIKE '%$searchterm' ORDER BY name";
+  		$query = "SELECT * FROM stores where (name LIKE '%$searchterm%' OR type LIKE '%$searchterm') AND zip = '$zip' ORDER BY name";
   
   		$result = mysqli_query($db, $query)
    			or die("Error Querying Database");
