@@ -17,7 +17,7 @@
   $query = "select * from users WHERE username = '$username'";
   $result = mysqli_query($db, $query);
   if ($row != mysqli_fetch_array($result)) {
-    $query= "INSERT INTO users VALUES('$username', SHA('$pw'), '$zip') ";
+    $query= "INSERT INTO users VALUES('$username', SHA($pw), '$zip') ";
     $result = mysqli_query($db, $query) or die("Error Querying Database");
   }
 ?>  

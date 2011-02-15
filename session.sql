@@ -101,6 +101,6 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `zipcode`) VALUES
-(1, 'raz', 'p00d13', 88005),
-(2, 'ann', 'changeme', 22401),
-(3, 'lazy', 'qwerty', 22401);
+(1, 'raz', SHA('p00d13'), 88005),
+(2, 'ann', SHA('changeme'), 22401),
+(3, 'lazy', SHA('qwerty'), 22401);
