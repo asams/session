@@ -16,7 +16,7 @@
   $name = mysqli_real_escape_string($db, trim($_POST['username']));
   $pw = mysqli_real_escape_string($db, trim($_POST['pw']));
 
-   $query = "select * from users WHERE username = '$name' AND password = '$pw'";
+   $query = "select * from users WHERE username = '$name' AND password = SHA('$pw')";
    $result = mysqli_query($db, $query);
    if ($row = mysqli_fetch_array($result))
    {
