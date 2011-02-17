@@ -29,11 +29,29 @@
   //echo $query;
   $result = mysqli_query($db, $query) or die("Error Querying Database1");
   if ($row = mysqli_fetch_array($result)) {
-    echo 'That username already exists';
+    echo '<h1><center>A user with that username and password already exists.<br>';
+    echo '<h1><center>Try again. </h1></center><br/>';
+    echo '<form method="post" action="createaccount.php">
+    	<label for="username">Username:</label>
+    	<input type="text" id="username" name="username" /><br />
+    	<label for="pw">Password:</label>
+    	<input type="password" id="pw" name="pw" /><br />
+   	<label for="zip">Zipcode:</label>
+    	<input type="text" id="zip" name="zip" /><br />
+    	<input type="submit" value="Create Account" name="submit" />
+    </form>';
+  
   } else {
-     $query= "INSERT INTO users ('username', 'password', 'zipcode') VALUES('$username', SHA($pw), '$zip') ";
-     echo $query;
+     $query= "INSERT INTO users (username, password, zipcode) VALUES ('$username', SHA('$pw'), '$zip') ";
+     //echo $query;
      $result = mysqli_query($db, $query) or die("Error Querying Database2");
+     echo '<h1><center>You have successfully created an account with the username of ' . $username . '.<br><br>';
+     echo 'Please sign in below.<br><br></center>';
+     echo  "<form method=\"post\" action=\"login.php\">";
+     echo "<label for=\"username\">Username:</label><input type=\"text\" id=\"username\" name=\"username\" /><br />";
+     echo "<label for=\"pw\">Password:</label><input type=\"password\" id=\"pw\" name=\"pw\" /><br />";
+     echo "<input type=\"submit\" value=\"Login\" name=\"submit\" /></form> ";
+
   }
 ?>  
 </div>
