@@ -14,13 +14,13 @@
 <body>
 <div id="contents">
 <?php
-  echo "<center><h3>You have successfully logged out!</h3>\n <h3>If you want to log back in, use the form below.</h3></center>";
+  echo "<center><h1>You have successfully logged out!</h1>\n <h1>If you want to log back in, use the form below.</h1></center>";
 
 
-	echo  "<h1>Log In</h1>\n  <form method=\"post\" action=\"login.php\">";
+	echo  "<form method=\"post\" action=\"login.php\">";
     	echo "<label for=\"username\">Username:</label><input type=\"text\" id=\"username\" name=\"username\" /><br />";
         echo "<label for=\"pw\">Password:</label><input type=\"password\" id=\"pw\" name=\"pw\" /><br />";
-        echo "<input type=\"submit\" value=\"Login\" name=\"submit\" /></form> <p><a href=\"createAccount.html\">Create Account</a></p>";
+        echo "<input type=\"submit\" value=\"Login\" name=\"submit\" /></form>";
     
    
   
